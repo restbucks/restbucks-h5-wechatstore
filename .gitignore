@@ -1,0 +1,7 @@
+#intelij
+.idea
+*.iml
+
+#local
+nginx/conf.d/default.conf
+
