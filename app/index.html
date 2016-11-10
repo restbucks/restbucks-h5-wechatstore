@@ -9,9 +9,7 @@
     <base href="/"/>
 </head>
 <body>
-<div class="container">
-    <div>
-    </div>
+<div class="me">
 </div>
 </body>
 <script src="/libs/jquery-3.1.1.min.js"></script>
@@ -19,8 +17,19 @@
 <script type="text/javascript">
     $(document).ready(function () {
         var userIdentified = Cookies.get('wechatStoreUserIdentified');
+        var csrfToken = Cookies.get('wechatStoreCsrfToken');
         if (userIdentified) {
-            alert('user identified')
+            $.get({
+                url: "/wechat/me",
+                dataType: 'json',
+                headers: {
+                    'x-csrf-token': csrfToken
+                },
+                contentType: 'application/json; charset=utf-8',
+                success: function (me) {
+                    $('.me').html(me.nickname + '<img src="' + me.avatar + '">');
+                }
+            });
         } else {
             //redirect to WeChat for identify the user
             // similar behavior as an HTTP redirect
