@@ -14,15 +14,15 @@
     </div>
 </div>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<script src="/libs/jquery-3.1.1.min.js"></script>
+<script src="/libs/js.cookie-2.1.3.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        var userIdentified = $.cookie('wechatStoreUserIdentified');
+        var userIdentified = Cookies.get('wechatStoreUserIdentified');
         if (userIdentified) {
-
+            alert('user identified')
         } else {
-            //redirect to WeChat for identitfy the user
+            //redirect to WeChat for identify the user
             // similar behavior as an HTTP redirect
             window.location.replace("/wechat/browser?origin=" + encodeURIComponent(document.URL));
         }

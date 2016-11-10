@@ -10,6 +10,10 @@ server {
   # wechat api endpoints
   location /wechat/ {
       proxy_pass   http://${BFF_HOST}:${BFF_PORT}/wechat/;
+      # proxy_redirect off;
+      # proxy_set_header Host $host:$server_port; # error 'no tunnel with $host' with this config item
+      # proxy_set_header X-Real-IP $remote_addr;
+      # proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
   }
 
 }
